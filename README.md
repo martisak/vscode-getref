@@ -45,7 +45,7 @@ After installation, you might need to reload or restart Visual Studio Code to ac
 
 ### Post-Installation
 
-After installing the `getref` extension, you can access its features via the command palette (Ctrl+Shift+P or Cmd+Shift+P) by typing `getref` and selecting the desired command.
+After installing the `getref` extension, you can access its features via the command palette (Ctrl+Shift+P or Cmd+Shift+P) by typing `Insert dblp reference` and selecting the desired command.
 
 For further information and support, visit the `getref` extension's page on the Visual Studio Code Marketplace or its GitHub repository.
 

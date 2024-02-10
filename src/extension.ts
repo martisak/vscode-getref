@@ -113,7 +113,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
         } catch (error) {
-            vscode.window.showErrorMessage(`Error searching DBLP: ${error}`);
+            vscode.window.showErrorMessage(`Error searching dblp: ${error}`);
         }
     });
 

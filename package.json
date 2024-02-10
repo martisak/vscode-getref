@@ -24,7 +24,7 @@
     "commands": [
       {
           "command": "getref.insert_reference",
-          "title": "Insert DBLP reference"
+          "title": "Insert reference from dblp "
       }
     ],
     "configuration": {
