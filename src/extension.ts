@@ -1,51 +1,40 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-
-export function helloWorld() {
-	// Display a message box to the user
-	vscode.window.showInformationMessage('Hello World from getref!');
-
+interface Author {
+	text: string;
 }
+
+interface HitInfo {
+	title: string;
+	year: number;
+	venue: string;
+	key: string;
+	authors: { author: Author[] };
+}
+
+interface Hit {
+	info: HitInfo;
+}
+
+interface Hits {
+	hit: Hit[];
+}
+
+interface DBLP {
+	result: { hits: Hits };
+}
+
+
+interface PickItem {
+	label: string;
+	detail: string;
+	key: string; 
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
-	interface Author {
-		text: string;
-	}
 
-	interface HitInfo {
-		title: string;
-		key: string;
-		authors: { author: Author[] };
-	}
-	
-	interface Hit {
-		info: HitInfo;
-	}
-	
-	interface Hits {
-		hit: Hit[];
-	}
-	
-	interface DBLP {
-		result: { hits: Hits };
-	}
-
-
-	interface PickItem {
-		label: string;
-		detail: string;
-		key: string; 
-	}
-
-
-
-	console.log('Congratulations, your extension "getref" is now active!');
-
-	let disposable = vscode.commands.registerCommand('getref.insertFromURL', async () => {
+	let disposable = vscode.commands.registerCommand('getref.insert_reference', async () => {
 
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
@@ -64,6 +53,9 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 		
+		let configuration = vscode.workspace.getConfiguration('getref');
+		const style = configuration.get<number>("style", 0);
+	
 		const url = new URL('http://dblp.uni-trier.de/search/publ/api');
 		url.searchParams.append('q', query);
 		url.searchParams.append('h', '100');
@@ -76,19 +68,19 @@ export function activate(context: vscode.ExtensionContext) {
                 headers: { 'Accept': 'application/json' }
             });
 
-            const json =  await response.json() as DBLP;;
+            const json =  await response.json() as DBLP;
 			const hits = json["result"]["hits"]["hit"];
 			
-
-
 			const picks: PickItem[] = hits.map((pub: Hit) => {
 
 				// Normalize the authors to always be an array
 				const authors = Array.isArray(pub.info.authors.author) ? pub.info.authors.author : [pub.info.authors.author];
-				
+
+				const author_str = authors.map((a: Author) => typeof a === 'object' ? a.text : a).join(', ');
+
 				return {
 					label: pub.info.title,
-					detail: authors.map((a: Author) => typeof a === 'object' ? a.text : a).join(', '), 
+					detail: `${author_str}, ${pub.info.venue}, ${pub.info.year}`, 
 					key: pub.info.key 
 				};
             });
@@ -101,11 +93,10 @@ export function activate(context: vscode.ExtensionContext) {
             if (selectedPub) {
 
 				vscode.window.showInformationMessage(`Inserting ${selectedPub.key}`);
-                // Fetch the BibTeX using selectedPub.bibtex if necessary
-                // For this example, we'll just insert the URL as a placeholder
-                
-				const biburl = `http://dblp.uni-trier.de/rec/bib0/${selectedPub.key}.bib`;
 
+
+				const biburl = `http://dblp.uni-trier.de/rec/${selectedPub.key}.bib?param=${style}`;
+				
 				const responsebib = await fetch(biburl);
 				
 				if (!responsebib.ok) {

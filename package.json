@@ -2,23 +2,42 @@
   "name": "getref",
   "displayName": "getref",
   "description": "Visual Code Studio interface to dblp.",
-  "repository": "https://github.com/martisak/vscode-getref",
-  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martisak/vscode-getref.git"
+  },
+  "version": "0.0.2",
+  "publisher": "martisak",
+  "pricing": "Free",
   "engines": {
     "vscode": "^1.86.0"
   },
   "categories": [
     "Other"
   ],
+  "bugs": {
+    "url": "https://github.com/martisak/vscode-getref/issues"
+  },
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-          "command": "getref.insertFromURL",
+          "command": "getref.insert_reference",
           "title": "Insert DBLP reference"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "getref",
+      "properties": {
+        "getref.style": {
+          "type": ["integer"],
+          "default": 2,
+          "description": "The style of dblp reference, can be one of 0 (condensed), 1 (standard) or 2 (crossref)"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -49,3 +68,4 @@
     "node-fetch": "^3.3.2"
   }
 }
+
