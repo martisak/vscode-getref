@@ -59,12 +59,6 @@ This extension contributes the following settings:
 
 There are no checks on input.
 
-## Release Notes
-
-### 0.0.1
-
-Initial release of getref.
-
 ## References
 
 1. [dblp API](https://dblp.org/faq/How+to+use+the+dblp+search+API.html)

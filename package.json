@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/martisak/vscode-getref.git"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "martisak",
   "pricing": "Free",
   "engines": {
