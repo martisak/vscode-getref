@@ -2,7 +2,9 @@
 
 ## Features
 
-This extension does one thing, and one thing only. It will allow you to search [dblp](https://dblp.org/), and select one of the results and insert the corresponding bibtex-entry. This is useful for quickly adding entries to a bibtex file.
+This extension does one thing, and one thing only. It will allow you to search [dblp](https://dblp.org/) [1], and select one of the results and insert the corresponding bibtex-entry. This is useful for quickly adding entries to a bibtex file. See also the [CLI version of getref](https://github.com/martisak/getref).
+
+![animation](getref.gif)
 
 ## Requirements
 
@@ -24,3 +26,9 @@ There are no checks on input.
 ### 0.0.1
 
 Initial release of getref.
+
+## References
+
+1. [dblp API](https://dblp.org/faq/How+to+use+the+dblp+search+API.html)
+1. [getref CLI](https://github.com/martisak/getref)
+1. ChatGPT, personal communication, February 10, 2024

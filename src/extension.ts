@@ -104,7 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
                 // Fetch the BibTeX using selectedPub.bibtex if necessary
                 // For this example, we'll just insert the URL as a placeholder
                 
-				const biburl = `http://dblp.uni-trier.de/rec/bib2/${selectedPub.key}.bib`;
+				const biburl = `http://dblp.uni-trier.de/rec/bib0/${selectedPub.key}.bib`;
 
 				const responsebib = await fetch(biburl);
 				

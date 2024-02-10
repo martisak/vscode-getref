@@ -1,7 +1,8 @@
 {
   "name": "getref",
   "displayName": "getref",
-  "description": "Text-menu and command line interface to dblp.",
+  "description": "Visual Code Studio interface to dblp.",
+  "repository": "https://github.com/martisak/vscode-getref",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.86.0"
