@@ -27,7 +27,7 @@ You can also install the `getref` extension using the command line interface of 
 2. Run the following command:
 
    ```bash
-   code --install-extension martisak.getref
+   code --install-extension martinisaksson.getref
    ````
 
 ### Manual Installation
