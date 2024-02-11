@@ -7,7 +7,7 @@
     "url": "https://github.com/martisak/vscode-getref.git"
   },
   "version": "0.0.3",
-  "publisher": "martinisaksson",
+  "publisher": "martisak",
   "pricing": "Free",
   "engines": {
     "vscode": "^1.86.0"
